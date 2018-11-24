@@ -7,6 +7,28 @@ client.on( "ready", () => {
 } );
 var prefix = config.prefix;
 
+
+const messageText = "Hello Coranos\n"
+    + ":deciduous_tree::deciduous_tree::deciduous_tree::deciduous_tree::deciduous_tree:\n"
+    + ":deciduous_tree::deciduous_tree::monkey::deciduous_tree::deciduous_tree:\n"
+    + ":deciduous_tree::deciduous_tree::deciduous_tree::deciduous_tree::mountain_snow:️\n"
+    + ":deciduous_tree::deciduous_tree::hole:️:deciduous_tree::deciduous_tree:\n"
+    + ":deciduous_tree::deciduous_tree::deciduous_tree::deciduous_tree::deciduous_tree:\n"
+    + ":arrow_upper_left:️:arrow_up:️:arrow_upper_right:️\n"
+    + ":arrow_left:️:monkey::arrow_right:️\n"
+    + ":arrow_lower_left:️:arrow_down:️:arrow_lower_right:️\n";
+
+client.on('messageReactionAdd', (reaction, user) => {
+    if(reaction.count < 2) {
+        return;
+    }
+    reaction.message.channel.send( messageText ).then(function (message) {
+        message.react("🐒")
+    }).catch(function(error) {
+        console.log( "error:" + error );
+    });
+});
+
 client.on( "message", ( message ) => {
     if ( message.content.startsWith( prefix + "ping" ) ) {
         message.channel.send( "pong!" );
@@ -14,9 +36,18 @@ client.on( "message", ( message ) => {
 
     if ( message.content.startsWith( "hola" ) ) {
         message.channel.send( "Hola Mayra" );
+        message.channel.send( messageText ).then(function (message) {
+            message.react("🐒")
+        }).catch(function(error) {
+            console.log( "error:" + error );
+        });
     }
     if ( message.content.startsWith( "hello" ) ) {
-        message.channel.send( "Hello Coranos" );
+        message.channel.send( messageText ).then(function (message) {
+            message.react("🐒")
+        }).catch(function(error) {
+            console.log( "error:" + error );
+        });
     }
 
     if ( message.content.startsWith( prefix + "a" ) ) {
