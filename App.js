@@ -15,6 +15,9 @@ client.on( "message", ( message ) => {
     if ( message.content.startsWith( "hola" ) ) {
         message.channel.send( "Hola Mayra" );
     }
+    if ( message.content.startsWith( "hello" ) ) {
+        message.channel.send( "Hello Coranos" );
+    }
 
     if ( message.content.startsWith( prefix + "a" ) ) {
         let img = message.mentions.users.first()
@@ -60,7 +63,7 @@ client.on( "message", ( message ) => {
             .addField( `Servidores`, `${client.guilds.size.toLocaleString()}`, true )
 
             .addField( `Usuarios`, `${client.users.size.toLocaleString()}`, true )
-//            .addField( `Canales`, `${client.channel.size.toLocaleString()}`, true )
+            // .addField( `Canales`, `${client.channel.size.toLocaleString()}`, true )
             .addField( `Conexiones a voz`, `${client.voiceConnections.size}`, true )
 
         message.channel.send( { embed } );
